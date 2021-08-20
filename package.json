@@ -2,5 +2,30 @@
   "dependencies": {
     "@openzeppelin/contracts": "^4.2.0",
     "@openzeppelin/test-helpers": "^0.5.13"
-  }
+  },
+  "name": "token-lock",
+  "version": "1.0.0",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "truffle test",
+    "compile": "truffle compile",
+    "migrate": "truffle migrate",
+    "rebuild": "rm -rf ./build && truffle compile && truffle migrate && truffle test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobomurod/token-lock.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bobomurod/token-lock/issues"
+  },
+  "homepage": "https://github.com/bobomurod/token-lock#readme",
+  "description": ""
 }
