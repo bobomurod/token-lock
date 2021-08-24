@@ -13,8 +13,8 @@ contract('Timelock', async accounts => {
 
     it('should lock and unlock token & ether', async () => {
         let contractEtherBalance, contractTokenBalance, ownerTokenBalance;
-        const etherAmount = web3.utils.toWei(1);
-        const tokenAmount = web3.utils.toWei(1);
+        const etherAmount = web3.utils.toWei('1');
+        const tokenAmount = web3.utils.toWei('1');
 
         await web3.eth.sendTransaction({
             from: owner,
@@ -29,8 +29,8 @@ contract('Timelock', async accounts => {
         assert(contractEtherBalance.toString() === etherAmount);
         assert(contractTokenBalance.toString() === tokenAmount);
 
-        await expectRevert(timelock.withdraw(token.address, tokenAmount, {from: otherAddress}), 'only owner');
-        await expectRevert(timelock.withdraw(token.address, tokenAmount, {from: owner}), 'too early');
+        await expectRevert(timelock.withdraw(token.address, tokenAmount, {from: otherAddress}), 'Only owner');
+        await expectRevert(timelock.withdraw(token.address, tokenAmount, {from: owner}), 'Too early');
 
         await time.increase(time.duration.years(1));
         await timelock.withdraw(constants.ZERO_ADDRESS, etherAmount, {from: owner});
